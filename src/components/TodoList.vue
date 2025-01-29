@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { TodoItem } from '../global.types'
 
+import TodoEditorInput from './TodoEditorInput.vue'
+
 interface TodoListProps {
 	todos: TodoItem[]
 	onToggle: (id: number) => void
@@ -19,17 +21,12 @@ defineProps<TodoListProps>()
 			@click="onToggle(todo.id)"
 		>
 			<label class="checkbox">
-				<input
-					class="input"
-					type="checkbox"
-					:checked="todo.completed"
-					@change="onToggle(todo.id)"
-				/>
+				<input type="checkbox" :checked="todo.completed" @change="onToggle(todo.id)" />
 
 				<span class="checkmark" />
 			</label>
 
-			<input class="text" v-model="todo.text" v-if="!todo.completed" @click.stop="" />
+			<TodoEditorInput v-model="todo.text" v-if="!todo.completed" />
 			<span class="text" v-else>{{ todo.text }}</span>
 
 			<button class="delete" @click.stop="onRemove(todo.id)">×</button>
@@ -61,11 +58,6 @@ defineProps<TodoListProps>()
 	background: var(--background);
 }
 
-.item.completed .text {
-	text-decoration: line-through;
-	color: var(--gray);
-}
-
 .checkbox {
 	position: relative;
 	display: inline-block;
@@ -74,18 +66,18 @@ defineProps<TodoListProps>()
 	margin-right: 1.25rem;
 }
 
-.input {
+.checkbox input {
 	opacity: 0;
 	width: 0;
 	height: 0;
 }
 
-.input:checked ~ .checkmark {
+.checkbox input:checked ~ .checkmark {
 	background: var(--primary);
 	border-color: var(--primary);
 }
 
-.input:checked ~ .checkmark:after {
+.checkbox input:checked ~ .checkmark:after {
 	display: block;
 }
 
@@ -122,6 +114,19 @@ defineProps<TodoListProps>()
 	border: none;
 	background: transparent;
 	word-break: break-all;
+}
+
+.text.input {
+	resize: none;
+	height: 100%;
+	width: 100%;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+
+.item.completed .text {
+	text-decoration: line-through;
+	color: var(--gray);
 }
 
 .delete {

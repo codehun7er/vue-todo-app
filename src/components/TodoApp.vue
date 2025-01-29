@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 
 import { FilterType, TodoItem } from '../global.types'
 
@@ -44,6 +44,18 @@ const filteredTodos = computed(() => {
 })
 
 const remainingTodos = computed(() => todos.value.filter(todo => !todo.completed).length)
+
+watch(
+	todos,
+	newVal => {
+		localStorage.setItem('todos', JSON.stringify(newVal))
+	},
+	{ deep: true }
+)
+
+onMounted(() => {
+	todos.value = JSON.parse(localStorage.getItem('todos') || '[]')
+})
 </script>
 
 <template>

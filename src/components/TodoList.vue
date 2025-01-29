@@ -29,7 +29,9 @@ defineProps<TodoListProps>()
 				<span class="checkmark" />
 			</label>
 
-			<span class="text">{{ todo.text }}</span>
+			<input class="text" v-model="todo.text" v-if="!todo.completed" @click.stop="" />
+			<span class="text" v-else>{{ todo.text }}</span>
+
 			<button class="delete" @click.stop="onRemove(todo.id)">×</button>
 		</li>
 	</ul>
@@ -117,6 +119,8 @@ defineProps<TodoListProps>()
 	margin-right: 1rem;
 	color: var(--white);
 	font-size: 1.1rem;
+	border: none;
+	background: transparent;
 	word-break: break-all;
 }
 

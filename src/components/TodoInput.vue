@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 
 interface TodoInputProps {
 	addTodo: (text: string) => void
@@ -14,6 +14,14 @@ const handleSubmit = () => {
 	addTodo(newTodo.value.trim())
 	newTodo.value = ''
 }
+
+watch(newTodo, newVal => {
+	localStorage.setItem('inputTodo', newVal)
+})
+
+onMounted(() => {
+	newTodo.value = localStorage.getItem('inputTodo') || ''
+})
 </script>
 
 <template>

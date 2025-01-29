@@ -1,6 +1,6 @@
-# Vue 3 Todo App | Приложение для списка задач на Vue 3
+# Vue 3 Todo App
 
-[English](#english) | [Русский](#russian)
+[English](#english) | [Русский](#русский)
 
 ![Vue.js](https://img.shields.io/badge/Vue.js-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)

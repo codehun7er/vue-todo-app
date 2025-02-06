@@ -31,7 +31,7 @@
 1. Клонируйте репозиторий:
 
 ```bash
-git clone [repository-url]
+git clone https://github.com/codehun7er/vue-todo-app.git
 ```
 
 2. Установите зависимости:
@@ -89,7 +89,7 @@ Responsive todo application built with Vue 3, TypeScript, and Vite. Features smo
 1. Clone the repository:
 
 ```bash
-git clone [repository-url]
+git clone https://github.com/codehun7er/vue-todo-app.git
 ```
 
 2. Install dependencies:
